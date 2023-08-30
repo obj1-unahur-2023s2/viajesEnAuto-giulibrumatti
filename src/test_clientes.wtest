@@ -1,0 +1,42 @@
+import clientes.*
+
+describe "Testing de Ana Maria"{
+
+	test "Esta economicamente estable" {
+		assert.that(anamaria.ecoEstable())
+	}
+
+	test "No esta economicamente estable" {
+		anamaria.revertirSitEconomica()
+		assert.notThat(anamaria.ecoEstable())
+	}
+	
+	test "Precio del km si esta economicamente estable"{
+		assert.equals(30, anamaria.precioPorKm())
+	}
+	
+	test "Precio del km no esta economicamente estable"{
+		anamaria.revertirSitEconomica()
+		assert.equals(25, anamaria.precioPorKm())
+	}
+
+}
+
+describe "Testing de Teresa"{
+	test "Precio por km sin cambios igual a 22"{
+		assert.equals(22, teresa.precioPorKm())
+	}
+	test "Precio por km con cambios igual a 32"{
+		teresa.precioPorKm(32)
+		assert.equals(32, teresa.precioPorKm())
+	}
+}
+
+describe "Testing de melina"{
+	test "Precio por km Lucía está reemplazando a Mariela, y Melina está trabajando para Ludmila"{
+		
+		melina.trabajaPara(ludmila)
+		assert.equals(15, melina.precioPorKm())
+		
+	}
+}
